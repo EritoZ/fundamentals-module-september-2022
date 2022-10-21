@@ -1,13 +1,8 @@
 def new_list(elements):
-    new_sequence = []
-    for i in range(len(elements)):
-        if i == len(elements) // 2:
-            new_sequence.append(f"-{moves}a")
-            new_sequence.append(f"-{moves}a")
+    elements.insert(len(elements) // 2, f"-{moves}a")
+    elements.insert(len(elements) // 2 + 1, f"-{moves}a")
 
-        new_sequence += sequence_elements[i]
-
-    return new_sequence
+    return elements
 
 
 sequence_elements = input().split(" ")
