@@ -1,27 +1,24 @@
 people = int(input())
-lift_state = input().split(" ")
+lift_state = list(map(int, input().split(" ")))
 no_people = False
 
-for i in range(len(lift_state)):
-    space = int(lift_state[i])
-    while space < 4:
-        space += 1
+for space in range(len(lift_state)):
+    while lift_state[space] < 4:
+        lift_state[space] += 1
         people -= 1
         if people == 0:
             no_people = True
             break
-    lift_state[i] = str(space)
     if no_people:
         break
 
-
-if no_people and sum(list(map(int, lift_state))) == len(lift_state) * 4:
-    print(f"{' '.join(lift_state)}")
+if no_people and sum(lift_state) == len(lift_state) * 4:
+    print(f"{' '.join(map(str, lift_state))}")
 elif no_people:
     print(f"""The lift has empty spots!
-{" ".join(lift_state)}
+{" ".join(map(str, lift_state))}
 """)
 else:
     print(f"""There isn't enough space! {people} people in a queue!
-{" ".join(lift_state)}
+{" ".join(map(str, lift_state))}
 """)
