@@ -35,15 +35,13 @@ for user in submissions:
         most_points = sum(submissions[user].values())
         user_most_points = user
 
-for user in submissions:
-    submissions[user] = dict(sorted(submissions[user].items(), key=lambda x: x[1], reverse=True))
-
 submissions = dict(sorted(submissions.items()))
 
 print(f"Best candidate is {user_most_points} with total {most_points} points.")
 print("Ranking:")
-for name in submissions:
-    print(name)
-    for contest in submissions[name]:
-        points = submissions[name][contest]
+for user in submissions:
+    submissions[user] = dict(sorted(submissions[user].items(), key=lambda x: x[1], reverse=True))
+    print(user)
+    for contest in submissions[user]:
+        points = submissions[user][contest]
         print(f"#  {contest} -> {points}")
