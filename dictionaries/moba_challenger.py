@@ -41,7 +41,6 @@ for player in players:
     players[player] = dict(sorted(players[player].items(), key=lambda position: position[0]))
     players[player] = dict(sorted(players[player].items(), key=lambda position: position[1], reverse=True))
 
-for player in players:
     print(f"{player}: {sum(players[player].values())} skill")
     for position in players[player]:
         print(f"- {position} <::> {players[player][position]}")
