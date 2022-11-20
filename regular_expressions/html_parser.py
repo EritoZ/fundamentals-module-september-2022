@@ -1,8 +1,8 @@
 import re
 
 html = input()
-title_information_pattern = r"<title>(.*?)<\/title>"
-content_information_pattern = r"<body>(.*?)<\/body>"
+title_information_pattern = r"<title>.*?<\/title>"
+content_information_pattern = r"<body>.*?<\/body>"
 
 valid_information_pattern = r"(?<=>).*?(?=<)"
 
