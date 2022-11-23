@@ -48,7 +48,7 @@ while command != "Stop":
         else:
             car_dict[the_car][0] = 10000
 
-    command= input()
+    command = input()
 
 for car in car_dict:
     print(f"{car} -> Mileage: {car_dict[car][0]} kms, Fuel in the tank: {car_dict[car][1]} lt.")
