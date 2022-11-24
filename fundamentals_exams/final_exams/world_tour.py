@@ -3,7 +3,7 @@ stops = input()
 command = input()
 while command != "Travel":
     data = command.split(":")
-    command, start_index_or_string, end_index_or_string  = data[0], data[1], data[2]
+    command, start_index_or_string, end_index_or_string = data[0], data[1], data[2]
 
     if command == "Add Stop":
         start_index_or_string = int(start_index_or_string)
