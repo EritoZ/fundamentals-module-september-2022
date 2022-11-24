@@ -22,8 +22,7 @@ while command != "Travel":
 
         stops = stops.replace(start_index_or_string, end_index_or_string)
 
-    if stops:
-        print(stops)
+    print(stops)
 
     command = input()
 
