@@ -2,7 +2,6 @@ import re
 
 text = input()
 coolness_threshold = 0
-cool_emojis = []
 
 valid_emojis = re.findall(r"(::|\*\*)([A-Z][a-z]{2,})\1", text)
 
