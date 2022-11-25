@@ -27,12 +27,15 @@ while command != "Generate":
             activation_key = activation_key[:start_index] + \
                              activation_key[start_index:end_index].lower() + \
                              activation_key[end_index:]
+            
         print(activation_key)
+        
     elif current_command == "Slice":
         index_start = int(command[1])
         index_end = int(command[2])
 
         activation_key = activation_key.replace(activation_key[index_start:index_end], "", 1)
+        
         print(activation_key)
 
     command = input()
