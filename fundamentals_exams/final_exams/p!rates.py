@@ -23,15 +23,10 @@ while command != "End":
 
         target_cities[town]["population"] -= people
         target_cities[town]["gold"] -= gold_in_town
-        if target_cities[town]["population"] < 0:
-            people -= target_cities[town]["population"]
-
-        if target_cities[town]["gold"] < 0:
-            gold_in_town -= target_cities[town]["gold"]
 
         print(f"{town} plundered! {gold_in_town} gold stolen, {people} citizens killed.")
 
-        if target_cities[town]["population"] <= 0 or target_cities[town]["gold"] <= 0:
+        if target_cities[town]["population"] == 0 or target_cities[town]["gold"] == 0:
             del target_cities[town]
             print(f"{town} has been wiped off the map!")
 
