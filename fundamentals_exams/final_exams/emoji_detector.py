@@ -16,6 +16,6 @@ for i, digit in enumerate(all_digits):
 print(f"""Cool threshold: {coolness_threshold}
 {len(valid_emojis)} emojis found in the text. The cool ones are:""")
 for emoji in valid_emojis:
-    coolness = sum(map(ord, [*emoji[1]]))
+    coolness = sum(map(ord, emoji[1]))
     if coolness >= coolness_threshold:
         print("".join(emoji) + emoji[0])
