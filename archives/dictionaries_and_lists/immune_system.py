@@ -6,7 +6,7 @@ virus_dict = {}
 command = input()
 while command != "end":
     virus = command
-    virus_strength = int(sum(map(ord, virus)) / 3)
+    virus_strength = sum(map(ord, virus)) // 3
     virus_defeat_time = virus_strength * len(virus)
 
     if virus not in virus_dict:
@@ -14,7 +14,7 @@ while command != "end":
 
     elif virus_dict[virus]["counter"] < 2:
         virus_dict[virus]["counter"] += 1
-        virus_defeat_time = int(virus_defeat_time / 3)
+        virus_defeat_time = virus_defeat_time // 3
 
     print(f"Virus {virus}: {virus_strength} => {virus_defeat_time} seconds")
 
