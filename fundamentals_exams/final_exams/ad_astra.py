@@ -1,4 +1,3 @@
-import math
 import re
 
 text = input()
@@ -10,7 +9,7 @@ food_information = re.findall(food_pattern, text)
 for food in food_information:
     calories += int(food[-1])
 
-days = math.floor(calories / 2000)
+days = calories // 2000
 
 print(f"You have food to last you for: {days} days!")
 for food in food_information:
