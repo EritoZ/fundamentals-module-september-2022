@@ -4,7 +4,10 @@ def perfect_number_checker(num: int):
         if num % n == 0:
             lst.append(n)
 
-    return sum(lst)
+    if sum(lst) == num:
+        return "We have a perfect number!"
+    else:
+        return "It's not so perfect."
 
 
 integer = int(input())
