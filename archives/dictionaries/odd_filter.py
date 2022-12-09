@@ -1,6 +1,6 @@
-def convert_odd(even_num: int):
+def convert_odd(even_num: int, array):
 
-    if even_num > sum(array_integers) / len(array_integers):
+    if even_num > sum(array) / len(array):
         even_num += 1
     else:
         even_num -= 1
@@ -8,10 +8,17 @@ def convert_odd(even_num: int):
     return str(even_num)
 
 
+def odd_filter(array):
+    
+    array = [num for num in array if num % 2 == 0]
+
+    array = [convert_odd(num, array) for num in array]
+    
+    return array
+
+
 array_integers = map(int, input().split())
 
-array_integers = [num for num in array_integers if num % 2 == 0]
+array_integers = odd_filter(array_integers)
 
-array_integers = " ".join(map(convert_odd, array_integers))
-
-print(array_integers)
+print(" ".join(array_integers))
