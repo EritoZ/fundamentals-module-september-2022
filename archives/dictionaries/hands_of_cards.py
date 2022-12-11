@@ -4,8 +4,8 @@ def card_value(card):
     power = card[0]
     type = power_type_dict[card[-1]]
 
-    if card[0] in power_type_dict:
-        power = power_type_dict[power[0]]
+    if power in power_type_dict:
+        power = power_type_dict[power]
 
     value = int(power) * type
 
