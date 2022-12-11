@@ -1,24 +1,22 @@
 population = list(map(int, input().split(", ")))
-minimum_wealth = int(input())
-no_distribution = False
+min_wealth = int(input())
+no_equal = False
 
-person = 0
-while min(population) < minimum_wealth:
-    if population[person] < minimum_wealth:
-        wealthiest = population.index(max(population))
-        while population[person] < minimum_wealth:
-            if max(population) > minimum_wealth:
-                population[person] += 1
-                population[wealthiest] -= 1
-            else:
-                no_distribution = True
-                break
-    person += 1
+for family in range(len(population)):
+    richest = population.index(max(population))
 
-    if no_distribution:
+    while population[family] < min_wealth:
+        if max(population) <= min_wealth:
+            no_equal = True
+            break
+
+        population[family] += 1
+        population[richest] -= 1
+
+    if no_equal:
         break
 
-if no_distribution:
-    print("No equal distribution possible")
-else:
+if not no_equal:
     print(population)
+else:
+    print("No equal distribution possible")
