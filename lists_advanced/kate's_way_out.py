@@ -89,7 +89,6 @@ while not finished:
 
         if check_right(spot, current_row_index, been_there_indexes, maze):
             reverse = False
-            continue
 
         elif check_up(spot, current_row_index, been_there_indexes, maze):
             current_row_index -= 1
