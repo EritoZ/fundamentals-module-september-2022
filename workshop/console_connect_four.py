@@ -4,8 +4,6 @@ from collections import deque
 def directions_search(row_len, col_len, board, current_spot, player_info):
     row_i, col_i = current_spot
 
-    min_len = min((row_len, col_len))
-
     left = [board[row_i][i] for i in range(col_i, -1, -1)]
 
     left_up = [board[row_i - i][col_i - i] for i in range(4)
@@ -26,7 +24,7 @@ def directions_search(row_len, col_len, board, current_spot, player_info):
     down_left = [board[row_i + i][col_i - i] for i in range(4)
                  if row_i + i in range(row_len) and col_i - i in range(col_len)]
 
-    return 4 * [current_player] in (
+    return 4 * [player_info] in (
             left, left_up, up, up_right,
             right, down_right, down, down_left
     )
@@ -43,6 +41,7 @@ spots_n = 6 * 7
 players = deque(([1, 0], [2, 0]))
 winner = False
 
+[print(row) for row in board_matrix]
 while spots_n and not winner:
 
     current_player = players[0][0]
@@ -52,6 +51,10 @@ while spots_n and not winner:
 
         for i in range(rows):
             if i == rows - 1 or board_matrix[i + 1][column_choice] != 0:
+
+                if column_choice < 0:
+                    raise IndexError
+
                 board_matrix[i][column_choice] = current_player
                 players[0][1] += 1
                 spots_n -= 1
@@ -62,12 +65,14 @@ while spots_n and not winner:
                     break
 
                 break
-            else:
-                print('Column is full. Try again.')
-                continue
+        else:
+            print('Column is full. Try again.')
+            continue
 
-    except IndexError:
-        print('Column choice is out of range. Try again.')
+    except (IndexError, ValueError):
+        print('Please, type a number from 1 to 7.\n')
+        [print(row) for row in board_matrix]
+
         continue
 
     [print(row) for row in board_matrix]
