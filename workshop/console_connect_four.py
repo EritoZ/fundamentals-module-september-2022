@@ -1,6 +1,10 @@
 from collections import deque
 
 
+class FullColumnError(Exception):
+    pass
+
+
 def directions_search(row_len, col_len, board, current_spot, player_info):
     row_i, col_i = current_spot
 
@@ -49,28 +53,32 @@ while spots_n and not winner:
     try:
         column_choice = int(input(f'Player {current_player}, please choose a column\n')) - 1
 
-        for i in range(rows):
-            if i == rows - 1 or board_matrix[i + 1][column_choice] != 0:
+        if column_choice < 0:
+            raise IndexError
 
-                if column_choice < 0:
-                    raise IndexError
+        column = [board_matrix[current_row][column_choice] for current_row in range(rows)]
 
-                board_matrix[i][column_choice] = current_player
-                players[0][1] += 1
-                spots_n -= 1
+        if 0 in column:
+            index_column = rows - 1 - column[::-1].index(0)
+            board_matrix[index_column][column_choice] = current_player
+            players[0][1] += 1
+            spots_n -= 1
 
-                if check_if_won(players[0][1], rows, columns, board_matrix, [i, column_choice], current_player):
-                    print(f'Player {current_player} won!')
-                    winner = True
-                    break
+            if check_if_won(players[0][1], rows, columns, board_matrix, [index_column, column_choice], current_player):
+                print(f'Player {current_player} won!')
+                winner = True
 
-                break
         else:
-            print('Column is full. Try again.')
-            continue
+            raise FullColumnError
 
     except (IndexError, ValueError):
         print('Please, type a number from 1 to 7.\n')
+        [print(row) for row in board_matrix]
+
+        continue
+
+    except FullColumnError:
+        print(FullColumnError('Column is full. Please, choose another.\n'))
         [print(row) for row in board_matrix]
 
         continue
